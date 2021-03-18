@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link class="option" to="/">Home</router-link> 
+      <router-link class="option" to="/Preplanned">Preplanned Trips</router-link> 
+      <router-link class="option" to="/Trips">Trips Cart</router-link>
     </div>
     <router-view />
   </div>
@@ -10,23 +11,29 @@
 
 <style scoped>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'PT Sans', sans-serif;
   text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
-  padding: 30px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 80px;
+  background-color: 	#DCDCDC;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 15px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.option {
+  padding-left: 25px;
+  padding-right: 25px;
+  font-size: 30px;
+  text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+
 </style>
