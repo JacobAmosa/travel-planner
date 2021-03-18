@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link class="option" to="/">Home</router-link> 
-      <router-link class="option" to="/Preplanned">Preplanned Trips</router-link> 
+      <router-link class="option" to="/Discounted">Discounted Trips</router-link> 
       <router-link class="option" to="/Trips">Trips Cart</router-link>
     </div>
     <router-view />

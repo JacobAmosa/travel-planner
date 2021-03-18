@@ -4,7 +4,7 @@
   <div id="message" >The Travel Planner is a travel planning agency that faciliates every process of organizing your dream vacation.<br>
   We don't want you to be burndened by stressing over all the small details of the your trip so... we do it for you!!
   </div>
-  <button class="route" ><router-link class="button" to="/Preplanned"> Take me to the Preplanned Trips</router-link></button>
+  <button class="route" ><router-link class="button" to="/Discounted"> Take me to the discounted Trips</router-link></button>
 
   <div class="middleText" >
   or <br>
@@ -14,65 +14,59 @@
   <div class="travel-question" >
     <div class="box" >
       <img src="../assets/hawaii.jpg" >
-      <button class="button" >Hawaii</button>
+      <button class="button" v-on:click="setLocation('hawaii')" >Hawaii</button>
     </div>
     <div class="box">
       <img src="../assets/france.jpg" >
-      <button class="button">France</button>
+      <button class="button" v-on:click="setLocation('france')">France</button>
     </div>
     <div class="box" >
       <img src="../assets/china.jpg" >
-      <button class="button">China</button>
-
+      <button class="button" v-on:click="setLocation('china')">China</button>
     </div>
-    <div class="box" >
-      <img src="../assets/newyork.jpg" >
-      <button class="button">newyork</button>
-  </div>
-
   </div>
 
   <h3 class="question" >Choose an airline:</h3>
   <div class="travel-question" >
-    <div class="box" >
-      <img src="../assets/alaska.png" >
-      <button class="button">Alaska Airlines</button>
-    </div>
     <div class="box">
       <img src="../assets/delta.jpg" >
-      <button class="button">Delta Airlines</button>
+      <button class="button" v-on:click="setAirline('delta')">Delta Airlines</button>
     </div>
     <div class="box" >
       <img src="../assets/southwest.png" >
-      <button class="button">Southwest Airlines</button>
+      <button class="button" v-on:click="setAirline('southwest')">Southwest Airlines</button>
     </div>
   </div>
 
   <h3 class="question" >Trip length:</h3>
   <div class="travel-question" >
     <div class="box" >
-      <button class="button">4 Days</button>
+      <button class="button" v-on:click="setDuration(4)">4 Days</button>
     </div>
     <div class="box">
-      <button class="button">1 week</button>
+      <button class="button" v-on:click="setDuration(7)">1 week</button>
     </div>
     <div class="box" >
-      <button class="button">1 week, 3 days</button>
+      <button class="button" v-on:click="setDuration(10)">1 week, 3 days</button>
     </div>
     <div class="box" >
-      <button class="button">2 weeks</button>
+      <button class="button" v-on:click="setDuration(14)">2 weeks</button>
     </div>
     <div class="box" >
-      <button class="button">3 weeks</button>
+      <button class="button" v-on:click="setDuration(21)">3 weeks</button>
     </div>
     <div class="box" >
-      <button class="button">1 month</button>
+      <button class="button" v-on:click="setDuration(30)">1 month</button>
     </div>
   </div>
  
  <div class="submit-button" >
-  <p>{{location}}</p>
-  <button class="submit" >Submit</button> 
+  <p class="finalTrip" v-if="(this.$root.$data.location != '') && (this.$root.$data.airline != '') && (this.$root.$data.duration != 0) && (this.$root.$data.cost != 0)">
+    ***Traveling to {{this.$root.$data.location}} with {{this.$root.$data.airline}} for {{this.$root.$data.duration}} days***<br> 
+    Total = ${{this.$root.$data.cost}}<br>
+    Click Submit to add trip to cart.
+    </p>
+  <button class="submit" v-on:click="createTrip()">Submit</button> 
  </div>
 
 </div>
@@ -81,12 +75,60 @@
 <script>
 export default {
   name: 'Home',
-setLocation(location) {
-  if (location == "hawaii"){
-    this.$root.$data.location = "hawaii";
+  methods: {
+  setLocation(location) {
+    if (location == "hawaii"){
+      this.$root.$data.location = "Hawaii";
+      }
+    else if (location == "france"){
+      this.$root.$data.location = "France";
+      }
+    else if (location == "china"){
+      this.$root.$data.location = "China";
+      }  
+    },
+  setAirline(airline) {
+    if (airline == "delta"){
+      this.$root.$data.airline = "Delta Airlines";
+      }
+    else if (airline == "southwest"){
+      this.$root.$data.airline = "Southwest Airlines";
+      } 
+    },
+  setDuration(duration) {
+    if (duration == 4){
+      this.$root.$data.duration = 4;
+      this.$root.$data.cost = 500;
+      }
+    else if (duration == 7){
+      this.$root.$data.duration = 7;
+      this.$root.$data.cost = 1200;
+      }
+    else if (duration == 10){
+      this.$root.$data.duration = 10;
+      this.$root.$data.cost = 1600;
+      }
+    else if (duration == 14){
+      this.$root.$data.duration = 14;
+      this.$root.$data.cost = 2000;
+      }
+    else if (duration == 21){
+      this.$root.$data.duration = 21;
+      this.$root.$data.cost = 2500;
+      }
+    else if (duration == 30){
+      this.$root.$data.duration = 30;
+      this.$root.$data.cost = 5000;
+      }  
+    },
+  createTrip (){
+    this.$root.$data.trips.push([{location: this.$root.$data.location, airline: this.$root.$data.airline, duration: this.$root.$data.duration, cost: this.$root.$data.cost}]);
+    this.$root.$data.duration = 0;
+    this.$root.$data.airline = '';
+    this.$root.$data.location = '';
+    this.$root.$data.cost = 0;
+  }     
   }
-}
-
 }
 </script>
 
@@ -112,9 +154,9 @@ setLocation(location) {
 }
 
 .question {
-  text-align: left;
-  padding-left: 600px;
-  padding-top: 50px;
+  text-align: center;
+  font-size: 30px;
+
 }
 
 img {
@@ -146,6 +188,11 @@ margin-bottom: 150px;
 .submit {
   padding: 20px 200px 20px 200px;
   font-size: 30px;
+}
+
+.finalTrip {
+  color: red;
+  font-size: 25px;
 }
 
 </style>

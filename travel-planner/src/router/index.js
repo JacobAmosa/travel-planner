@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Preplanned from "../views/Preplanned"
+import Discounted from "../views/Discounted"
 import Trips from "../views/Trips"
 
 
@@ -14,9 +14,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/preplanned",
-    name: "Preplanned",
-    component: Preplanned,
+    path: "/discounted",
+    name: "Discounted",
+    component: Discounted,
   },
   {
     path: "/Trips",
