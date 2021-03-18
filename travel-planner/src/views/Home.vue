@@ -14,7 +14,7 @@
   <div class="travel-question" >
     <div class="box" >
       <img src="../assets/hawaii.jpg" >
-      <button class="button">Hawaii</button>
+      <button class="button" >Hawaii</button>
     </div>
     <div class="box">
       <img src="../assets/france.jpg" >
@@ -69,7 +69,11 @@
       <button class="button">1 month</button>
     </div>
   </div>
-
+ 
+ <div class="submit-button" >
+  <p>{{location}}</p>
+  <button class="submit" >Submit</button> 
+ </div>
 
 </div>
 </template>
@@ -77,7 +81,11 @@
 <script>
 export default {
   name: 'Home',
-
+setLocation(location) {
+  if (location == "hawaii"){
+    this.$root.$data.location = "hawaii";
+  }
+}
 
 }
 </script>
@@ -128,6 +136,16 @@ img {
 .box {
   display: flex;
   flex-direction:column;
+}
+
+.submit-button {
+margin-top: 90px;
+margin-bottom: 150px;
+}
+
+.submit {
+  padding: 20px 200px 20px 200px;
+  font-size: 30px;
 }
 
 </style>

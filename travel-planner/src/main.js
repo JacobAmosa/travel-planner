@@ -5,6 +5,9 @@ import router from "./router";
 Vue.config.productionTip = false;
 
 let data = {
+  location: '',
+  airline: '',
+  duration: 0,
   trips: [],
   totalCost: 0
 }
