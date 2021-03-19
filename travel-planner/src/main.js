@@ -9,7 +9,8 @@ let data = {
   airline: '',
   duration: 0,
   trips: [],
-  cost: 0
+  cost: 0,
+  total: 0,
 }
 
 new Vue({

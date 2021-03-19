@@ -3,7 +3,7 @@
     <div id="nav">
       <router-link class="option" to="/">Home</router-link> 
       <router-link class="option" to="/Discounted">Discounted Trips</router-link> 
-      <router-link class="option" to="/Trips">Trips Cart</router-link>
+      <router-link class="option" to="/Trips">Planned Trips: {{this.$root.$data.trips.length}}</router-link>
     </div>
     <router-view />
   </div>

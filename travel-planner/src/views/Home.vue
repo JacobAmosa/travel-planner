@@ -10,8 +10,10 @@
   or <br>
   Create my own trip &#x2193;
   </div>
+
+
   <h3 class="question" >Where would you like to travel?</h3>
-  <div class="travel-question" >
+  <div class="travel-question 1" >
     <div class="box" >
       <img src="../assets/hawaii.jpg" >
       <button class="button" v-on:click="setLocation('hawaii')" >Hawaii</button>
@@ -27,19 +29,19 @@
   </div>
 
   <h3 class="question" >Choose an airline:</h3>
-  <div class="travel-question" >
+  <div class="travel-question 2" >
     <div class="box">
       <img src="../assets/delta.jpg" >
       <button class="button" v-on:click="setAirline('delta')">Delta Airlines</button>
     </div>
     <div class="box" >
       <img src="../assets/southwest.png" >
-      <button class="button" v-on:click="setAirline('southwest')">Southwest Airlines</button>
+      <button class="button" v-on:click="setAirline('southwest')">Southwest</button>
     </div>
   </div>
 
   <h3 class="question" >Trip length:</h3>
-  <div class="travel-question" >
+  <div class="travel-question 3" >
     <div class="box" >
       <button class="button" v-on:click="setDuration(4)">4 Days</button>
     </div>
@@ -47,7 +49,7 @@
       <button class="button" v-on:click="setDuration(7)">1 week</button>
     </div>
     <div class="box" >
-      <button class="button" v-on:click="setDuration(10)">1 week, 3 days</button>
+      <button class="button" v-on:click="setDuration(10)">1.5 weeks</button>
     </div>
     <div class="box" >
       <button class="button" v-on:click="setDuration(14)">2 weeks</button>
@@ -122,7 +124,8 @@ export default {
       }  
     },
   createTrip (){
-    this.$root.$data.trips.push([{location: this.$root.$data.location, airline: this.$root.$data.airline, duration: this.$root.$data.duration, cost: this.$root.$data.cost}]);
+    this.$root.$data.total += this.$root.$data.cost;
+    this.$root.$data.trips.push({location: this.$root.$data.location, airline: this.$root.$data.airline, duration: this.$root.$data.duration, cost: this.$root.$data.cost});
     this.$root.$data.duration = 0;
     this.$root.$data.airline = '';
     this.$root.$data.location = '';
@@ -156,7 +159,7 @@ export default {
 .question {
   text-align: center;
   font-size: 30px;
-
+  text-decoration: underline;
 }
 
 img {
@@ -194,5 +197,7 @@ margin-bottom: 150px;
   color: red;
   font-size: 25px;
 }
+
+
 
 </style>
