@@ -6,6 +6,9 @@
       <router-link class="option" to="/Trips">Planned Trips: {{this.$root.$data.trips.length}}</router-link>
     </div>
     <router-view />
+    <footer>
+      <a href="https://github.com/JacobAmosa/travel-planner.git">Github Repository</a>
+    </footer>
   </div>
 </template>
 
@@ -35,5 +38,14 @@
   text-decoration: none;
 }
 
+  footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #DCDCDC;
+  }
 
 </style>

@@ -10,7 +10,7 @@
             <h2 class="trips">Location: {{trip.location}}, Airline: {{trip.airline}}, Duration: {{trip.duration}} days</h2>
         </div>
     </div>
-    <h1>Total: ${{this.$root.$data.total}}</h1>
+    <h1 class="total">Total: ${{this.$root.$data.total}}</h1>
     </div>
 </div>
 </template>
@@ -35,6 +35,10 @@ export default {
 <style scoped>
 .trips {
     padding-left: 50px;
+}
+
+.total {
+    margin-bottom: 100px;
 }
 
 </style>
